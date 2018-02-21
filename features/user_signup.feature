@@ -9,26 +9,26 @@ Feature: User can sign up
     | Jade  | jf@ca.com | password123 | password123           |
 
   Scenario: User creates an account
-    Given user is on the Sign up page
-    When he fills in "Name" with "Holger"
-    And he fills in "Email" with "hacker@holger.com"
-    And he fills in "Password" with "password12"
-    And he fills in "Password confirmation" with "password12"
-    And he clicks "Create"
-    And he sees message "Welcome! You have signed up successfully."
+    Given I am on the Sign up page
+    When I fill in "Name" with "Holger"
+    And I fill in "Email" with "hacker@holger.com"
+    And I fill in "Password" with "password12"
+    And I fill in "Password confirmation" with "password12"
+    And I click "Create"
+    And I see message the "Welcome! You have signed up successfully."
 
   Scenario: User did not enter all fields
-    Given user is on the landing page
-    When he clicks "Sign up"
-    And he fills in "Password" with "password1"
-    And he fills in "Password confirmation" with "password1"
-    And he clicks "Create"
-    And he sees message "Name can't be blank"
+    Given I am on the landing page
+    When I click "Sign up"
+    And I fill in "Password" with "password1"
+    And I fill in "Password confirmation" with "password1"
+    And I click "Create"
+    And I see message the "Name can't be blank"
 
   Scenario: User did not enter both password fields
-    Given user is on the landing page
-    When he clicks "Sign up"
-    And he fills in "Name" with "Holger"
-    And he fills in "Password confirmation" with "password1"
-    And he clicks "Create"
-    And he sees message "Password confirmation doesn't match"
+    Given I am on the landing page
+    When I click "Sign up"
+    And I fill in "Name" with "Holger"
+    And I fill in "Password confirmation" with "password1"
+    And I click "Create"
+    And I see message the "Password confirmation doesn't match"
