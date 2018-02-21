@@ -5,9 +5,8 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    binding.pry
     recipients = User.where(id: conversation_params[:recipients])
-    conversation = current_user.send_message(recipients, conversation_params[:body], conversation_params[:subject]).conversation
+    conversation = current_user.send_message(recipients, conversation_params[:message], conversation_params[:subject]).conversation
     flash[:success] = 'Your message was successfully sent!'
     redirect_to conversation_path(conversation)
   end
@@ -19,7 +18,7 @@ class ConversationsController < ApplicationController
   end
 
   def reply
-    current_user.reply_to_conversation(conversation, message_params[:body])
+    current_user.reply_to_conversation(conversation, message_params[:message])
     flash[:notice] = 'Your reply message was successfully sent!'
     redirect_to conversation_path(conversation)
   end
@@ -37,11 +36,11 @@ class ConversationsController < ApplicationController
   private
 
   def conversation_params
-    params.require(:conversation).permit(:subject, :body, recipients: [])
+    params.require(:conversation).permit(:subject, :message, recipients: [])
   end
 
   def message_params
-    params.require(:message).permit(:body, :subject)
+    params.require(:message).permit(:message, :subject)
   end
 
 end

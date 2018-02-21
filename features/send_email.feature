@@ -11,8 +11,7 @@ Feature: Test if user is able to send message.
 
   Scenario: Kalle sends a message to Holger
     Given I am logged in as 'Kalle'
-    And I am on the 'inbox page'
-    #And show me the page
+    And I am on the inbox page
     Then I click the 'Compose' link
     And I select 'Holger' as 'Recipients'
     And I type in 'Heia Norge' in field for 'Subject'

@@ -9,7 +9,7 @@ Given("I am logged in as {string}") do |name|
   login_as(user, scope: :user)
 end
 
-Given("I am on the {string}") do |string|
+Given("I am on the inbox page") do
   visit mailbox_inbox_path #mailbox/inbox
 end
 
@@ -25,8 +25,8 @@ Then("I type in {string} in field for {string}") do |text, element|
   fill_in(element, :with => text)
 end
 
-Then("I should see {string} on my screen") do |string|
-  fill_in(element, :with => text)
+Then("I should see {string} on my screen") do |text|
+  expect(page).to have_content text
 end
 
 Given("show me the page") do
