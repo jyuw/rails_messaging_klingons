@@ -1,5 +1,7 @@
 require 'cucumber/rails'
 
+World(FactoryBot::Syntax::Methods)
+
 ActionController::Base.allow_rescue = false
 
 begin
