@@ -2,18 +2,56 @@ require 'rails_helper'
 
 RSpec.describe User do
 
-  kalle = described_class.new(name: 'Kalle', password: 'passord123', email: 'kalle@kalle.no')
-  holger = described_class.new(name: 'Holger', password: 'passord123', email: 'holgeer@kalle.no')
+  describe "User" do
 
-  it 'is expected to have a name' do
-    expect(kalle.name).to eq 'Kalle'
+      kalle = described_class.new(name: 'Kalle', password: 'passord123', email: 'kalle@kalle.no')
+      holger = described_class.new(name: 'Holger', password: 'passord123', email: 'holgeer@kalle.no')
+
+    it 'is expected to have a name' do
+      expect(kalle.name).to eq 'Kalle'
+    end
+
+    it 'is expected to have a name' do
+      expect(holger.name).to eq 'Holger'
+    end
   end
 
-  it 'is expected to have a name' do
-    expect(holger.name).to eq 'Holger'
-  end
+    describe "Mailboxer functionality " do
 
+        sender = described_class.new(name: 'Kalle', password: 'passord123', email: 'kalle@kalle.no')
+        receiver = described_class.new(name: 'Holger', password: 'passord123', email: 'holgeer@kalle.no')
 
+      before do
+        sender.send_message(receiver, 'Hallå hallå', 'Hej')
+      end
+
+      it 'receiver should get a mail from sender' do
+        expect(receiver.mailbox.inbox.first.subject).to eq 'Hej'
+      end
+
+      it 'sender should have message in sentbox' do
+        expect(sender.mailbox.sentbox.first.subject).to eq 'Hej'
+      end
+
+      it 'user should be able to delete a message and see it in trash' do
+        conversation = receiver.mailbox.inbox.first
+        receiver.trash(conversation)
+        expect(receiver.mailbox.trash.first.subject).to eq 'Hej'
+      end
+
+      it 'user should be able to untrash a message' do
+        conversation = receiver.mailbox.trash.first
+        receiver.untrash(conversation)
+        expect(receiver.mailbox.inbox.first.subject).to eq 'Hej'
+      end
+
+      it 'user should be able to reply to message' do
+        binding.pry
+        conversation = receiver.mailbox.inbox.first
+        receiver.reply(conversation, 'hej på dig')
+        expect(sender.mailbox.inbox.first.body).to have_content 'hej på dig'
+      end
+    end
 end
 
 
