@@ -44,13 +44,6 @@ RSpec.describe User do
         receiver.untrash(conversation)
         expect(receiver.mailbox.inbox.first.subject).to eq 'Hej'
       end
-
-      it 'user should be able to reply to message' do
-        binding.pry
-        conversation = receiver.mailbox.inbox.first
-        receiver.reply(conversation, 'hej på dig')
-        expect(sender.mailbox.inbox.first.body).to have_content 'hej på dig'
-      end
     end
 end
 
