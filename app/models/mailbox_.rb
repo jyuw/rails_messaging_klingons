@@ -1,0 +1,2 @@
+class Mailboxer < ApplicationRecord
+end
