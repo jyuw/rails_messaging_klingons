@@ -19,12 +19,11 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'spring'
   gem 'cucumber-rails', :require => false
-  gem 'cucumber'
-  gem 'rspec'
   gem "rspec-rails"
   gem 'database_cleaner'
   gem 'capybara'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'launchy'
 
 end
 
