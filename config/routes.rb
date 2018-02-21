@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
 
   # conversations
+  # root controller: :welcome, action: :index
+
   resources :conversations do
     member do
       post :reply
