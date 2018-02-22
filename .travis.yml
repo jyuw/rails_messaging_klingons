@@ -14,7 +14,7 @@ services:
 test:
   adapter: postgresql
   database: travis_ci_test
-    
+
 before_script:
   - psql -c "CREATE DATABASE rails_messaging_test;" -U postgres
-  - psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
+  # - psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
