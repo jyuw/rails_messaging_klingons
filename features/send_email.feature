@@ -18,3 +18,11 @@ Feature: Test if user is able to send message.
     And I type in 'Heia Northug' in field for 'Message'
     And I click the 'Send Message' button
     And I should see 'Your message was successfully sent!' on my screen
+
+  Scenario: Holger recieves a message from Kalle
+    Given Kalle have sent an message to Holger
+    And I am logged in as 'Holger'
+    And I am on the inbox page
+    Then I should see 'Heia Norge' on my screen
+    Then I click the 'View' link
+    And I should see 'Heia Northug' on my screen
