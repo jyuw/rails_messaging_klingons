@@ -13,10 +13,10 @@ services:
 
 test:
   adapter: postgresql
-  database: travis_ci_test
+  database: rails_messaging_test
 
 before_script:
-  - bundle exec rake db:test:prepare
-  - bundle exec rspec spec/
+  # - bundle exec rake db:test:prepare
+  # - bundle exec rspec spec/
   - psql -c "CREATE DATABASE rails_messaging_test;" -U postgres
   - psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
