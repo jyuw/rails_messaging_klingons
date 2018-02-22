@@ -2,9 +2,6 @@ source 'https://rubygems.org'
 ruby '2.4.1'
 
 gem 'rails', '5.1.5'
-gem 'rspec-rails', '~> 3.7'
-gem 'cucumber-rails'
-gem 'cucumber'
 gem 'bootstrap-sass'
 gem 'chosen-rails'
 gem 'devise'
@@ -17,8 +14,6 @@ gem 'rake', '~> 11.1', '>= 11.1.2'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
-gem 'coveralls', require: false
-
 
 group :development, :test do
   gem 'pry-byebug'
@@ -27,12 +22,14 @@ group :development, :test do
   gem 'launchy'
   gem 'pry-rails'
   gem "factory_bot_rails", "~> 4.0"
+  gem 'rspec-rails', '~> 3.7'
+  gem 'cucumber-rails'
+end
+
+group :test do
+  gem 'coveralls', require: false
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
-end
-
-group :production do
-  gem 'rails_12factor'
 end
