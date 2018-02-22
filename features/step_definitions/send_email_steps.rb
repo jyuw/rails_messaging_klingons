@@ -36,3 +36,7 @@ end
 Then("I click the {string} link") do |element|
   click_link(element)
 end
+
+Then("I accept the alert") do
+  page.evaluate_script('window.confirm = function() { return true; }')
+end

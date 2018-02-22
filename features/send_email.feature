@@ -30,3 +30,16 @@ Feature: Test if user is able to send message.
     And I click the 'Reply' button
     And I should see 'Your reply message was successfully sent!' on my screen
 
+
+  Scenario: Holger recieves a message from Kalle and deletes it
+    Given Kalle have sent an message to Holger
+    And I am logged in as 'Holger'
+    And I am on the inbox page
+    Then I should see 'Heia Norge' on my screen
+    Then I click the 'View' link
+    And I should see 'Heia Northug' on my screen
+    And I click the 'Move to trash' link
+    And I accept the alert
+    Then I click the 'Trash' link
+    And I should see 'Heia Northug' on my screen
+
