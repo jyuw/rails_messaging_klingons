@@ -3,8 +3,6 @@ cache: bundler
 rvm:
   - 2.4.1
 script:
-  - bundle exec rspec
-  - bundle exec rails db:test:prepare
 deploy:
   provider: heroku
   api_key:
@@ -15,7 +13,7 @@ services:
 
 test:
   adapter: postgresql
-  database: rails_messaging_test
+  database: travis_ci_test
 
 before_script:
   - psql -c "CREATE DATABASE rails_messaging_test;" -U postgres
