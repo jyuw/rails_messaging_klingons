@@ -24,7 +24,8 @@ group :development, :test do
   gem 'capybara'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'launchy'
-
+  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
 end
 
 group :production do

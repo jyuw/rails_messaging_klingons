@@ -30,7 +30,7 @@ Feature: Test if user is able to send message.
     And I click the 'Reply' button
     And I should see 'Your reply message was successfully sent!' on my screen
 
-
+  @javascript
   Scenario: Holger recieves a message from Kalle and deletes it
     Given Kalle have sent an message to Holger
     And I am logged in as 'Holger'

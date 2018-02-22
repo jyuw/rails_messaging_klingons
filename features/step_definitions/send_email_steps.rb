@@ -38,5 +38,5 @@ Then("I click the {string} link") do |element|
 end
 
 Then("I accept the alert") do
-  page.evaluate_script('window.confirm = function() { return true; }')
+  page.driver.browser.switch_to.alert.accept
 end
