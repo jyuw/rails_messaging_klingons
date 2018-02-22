@@ -1,7 +1,7 @@
-Feature: Test if user is able to send message.
+Feature: Test of mailboxers functionality
   As a user
-  in order to communicate
-  I should be able to send a message
+  In order to communicate
+  I should be send, recieve and manage my messages and conversations
 
   Background:
     Given The following users exist
@@ -16,7 +16,7 @@ Feature: Test if user is able to send message.
     And I select 'Holger' as 'Recipients'
     And I type in 'Heia Norge' in field for 'Subject'
     And I type in 'Heia Northug' in field for 'Message'
-    And I click the 'Send Message' button
+    Then I click the 'Send Message' button
     And I should see 'Your message was successfully sent!' on my screen
 
   Scenario: Holger recieves a message from Kalle and replies
@@ -27,7 +27,7 @@ Feature: Test if user is able to send message.
     Then I click the 'View' link
     And I should see 'Heia Northug' on my screen
     And I type in 'Heja Carlson' in field for 'message_body'
-    And I click the 'Reply' button
+    Then I click the 'Reply' button
     And I should see 'Your reply message was successfully sent!' on my screen
 
   @javascript
@@ -35,11 +35,26 @@ Feature: Test if user is able to send message.
     Given Kalle have sent an message to Holger
     And I am logged in as 'Holger'
     And I am on the inbox page
-    Then I should see 'Heia Norge' on my screen
+    And I should see 'Heia Norge' on my screen
     Then I click the 'View' link
     And I should see 'Heia Northug' on my screen
-    And I click the 'Move to trash' link
-    And I accept the alert
+    Then I click the 'Move to trash' link
+    Then I accept the alert
     Then I click the 'Trash' link
     And I should see 'Heia Northug' on my screen
 
+  @javascript
+  Scenario: Holger recieves a message from Kalle and deletes it and then untrash it.
+    Given Kalle have sent an message to Holger
+    And I am logged in as 'Holger'
+    And I am on the inbox page
+    And I should see 'Heia Norge' on my screen
+    Then I click the 'View' link
+    And I should see 'Heia Northug' on my screen
+    Then I click the 'Move to trash' link
+    And I accept the alert
+    Then I click the 'Trash' link
+    And I should see 'Heia Northug' on my screen
+    Then I click the 'View' link
+    Then I click the 'Untrash' link
+    And I should see 'Heia Northug' on my screen

@@ -1,2 +1,0 @@
-class Mailboxer < ApplicationRecord
-end

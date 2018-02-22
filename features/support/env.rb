@@ -1,4 +1,5 @@
 require 'cucumber/rails'
+World(FactoryBot::Syntax::Methods)
 Chromedriver.set_version '2.33'
 
 Capybara.register_driver :selenium do |app|

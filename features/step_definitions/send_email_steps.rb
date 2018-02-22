@@ -1,6 +1,6 @@
 Given("The following users exist") do |table|
   table.hashes.each do |user|
-    User.create(user)
+    FactoryBot.create(:user, user)
   end
 end
 
@@ -18,11 +18,11 @@ Then("I click the {string} button") do |element|
 end
 
 Then("I select {string} as {string}") do |user, list|
-  select(user, :from => list)
+  select(user, from: list)
 end
 
 Then("I type in {string} in field for {string}") do |text, element|
-  fill_in(element, :with => text)
+  fill_in(element, with: text)
 end
 
 Then("I should see {string} on my screen") do |text|
