@@ -1,5 +1,7 @@
 require 'cucumber/rails'
 
+Chromedriver.set_version '2.33'
+
 World(FactoryBot::Syntax::Methods)
 
 ActionController::Base.allow_rescue = false
