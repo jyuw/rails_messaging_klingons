@@ -1,4 +1,5 @@
 require 'coveralls'
+require 'support/factory_bot'
 Coveralls.wear!
 
 RSpec.configure do |config|

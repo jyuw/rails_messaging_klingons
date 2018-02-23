@@ -24,7 +24,7 @@ When("I fill in {string} with {string}") do |field, input|
   fill_in field, with: input
 end
 
-When("I see message the {string}") do |message|
+Then("I should see the message {string}") do |message|
   expect(page).to have_content(message)
 end
 
