@@ -4,9 +4,9 @@ rvm:
   - 2.4.1
 script:
   - bundle install
-  - rake db:migrate
-  - rake db:test:prepare
-  - rake
+  - bundle exec rake db:migrate
+  - bundle exec rake db:test:prepare
+  - bundle exec rake
 services:
   - postgresql
 
