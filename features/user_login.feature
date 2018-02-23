@@ -1,7 +1,7 @@
 Feature: User can login
-  As a developer,
-  in order to see the log in function works,
-  we need to create a feature test.
+  As a user,
+  in order to access my account,
+  I would like to be able to login.
 
   Background:
     Given the following user exists
@@ -13,17 +13,17 @@ Feature: User can login
     When I fill in "Email" with "jf@ca.com"
     And I fill in "Password" with "password123"
     And I click "Log in"
-    And I see message the "Signed in successfully."
+    Then I see message the "Signed in successfully."
 
   Scenario: User did not enter all fields
     Given I am on the Login page
     And I fill in "Password" with "password123"
     And I click "Log in"
-    And I see message the "Invalid Email or password."
+    Then I see message the "Invalid Email or password."
 
   Scenario: User's credentials do not exist in the database
     Given I am on the Login page
     And I fill in "Email" with "Holger@hacker.com"
     And I fill in "Password" with "password1"
     And I click "Log in"
-    And I see message the "Invalid Email or password."
+    Then I see message the "Invalid Email or password."
