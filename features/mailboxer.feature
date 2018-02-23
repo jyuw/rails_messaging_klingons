@@ -17,20 +17,20 @@ Feature: Test of mailboxers functionality
 
 
   Scenario: Holger recieves a message from Kalle and replies
-    Given I type in 'Heja Carlson' in field for 'message_body'
+    When I type in 'Heja Carlson' in field for 'message_body'
     And I click the 'Reply' button
     Then I should see 'Your reply message was successfully sent!' on my screen
 
   @javascript
   Scenario: Holger recieves a message from Kalle and deletes it
-    Given I click the 'Move to trash' link
+    When I click the 'Move to trash' link
     And I accept the alert
     And I click the 'Trash' link
     Then I should see 'Heia Northug' on my screen
 
   @javascript
   Scenario: Holger recieves a message from Kalle and deletes it and then untrash it.
-    Given I click the 'Move to trash' link
+    When I click the 'Move to trash' link
     And I accept the alert
     And I click the 'Trash' link
     Then I should see 'Heia Northug' on my screen
@@ -45,5 +45,5 @@ Feature: Test of mailboxers functionality
     And I select 'Holger' as 'Recipients'
     And I type in 'Heia Norge' in field for 'Subject'
     And I type in 'Heia Northug' in field for 'Message'
-    When I click the 'Send Message' button
+    And I click the 'Send Message' button
     Then I should see 'Your message was successfully sent!' on my screen
