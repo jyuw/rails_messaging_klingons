@@ -17,22 +17,22 @@ Feature: Test of mailboxers functionality
 
 
   Scenario: Holger recieves a message from Kalle and replies
-    When I type in 'Heja Carlson' in field for 'message_body'
-    And I click the 'Reply' button
+    Given I type in 'Heja Carlson' in field for 'message_body'
+    When I click the 'Reply' button
     Then I should see 'Your reply message was successfully sent!' on my screen
 
   @javascript
   Scenario: Holger recieves a message from Kalle and deletes it
-    When I click the 'Move to trash' link
+    Given I click the 'Move to trash' link
     And I accept the alert
-    And I click the 'Trash' link
+    When I click the 'Trash' link
     Then I should see 'Heia Northug' on my screen
 
   @javascript
   Scenario: Holger recieves a message from Kalle and deletes it and then untrash it.
-    When I click the 'Move to trash' link
+    Given I click the 'Move to trash' link
     And I accept the alert
-    And I click the 'Trash' link
+    When I click the 'Trash' link
     Then I should see 'Heia Northug' on my screen
     When I click the 'View' link
     And I click the 'Untrash' link
